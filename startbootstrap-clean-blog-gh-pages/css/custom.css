@@ -1,0 +1,79 @@
+/* Custom stylesheet created from scratch */
+
+/* Font and base colors */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: grey; /* page background */
+  color: black; /* default font color */
+  line-height: 1.45;
+}
+
+/* Heading color */
+h1#stocks {
+  color: #2c3e50;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  margin-top: 0.5rem;
+}
+
+/* Container to center the page */
+.container {
+  max-width: 900px;
+  margin: 1.25rem auto;
+  padding: 1rem;
+}
+h1{
+  position: relative;
+}
+/* White content block with subtle shadow */
+.content {
+  background: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  color: #333333; /* override default font color for content */
+}
+
+/* Media block for image/video alignment */
+.media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+/* Tableau block spacing */
+.tableau {
+  margin-top: 1rem;
+}
+
+/* Footer link style */
+.footer-link a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+.footer-link a:hover {
+  text-decoration: underline;
+}
+
+/* Small utility classes */
+.text-muted {
+  color: #6c757d;
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0.5rem; }
+  .content { padding: 0.75rem; }
+}
+
+/* Resume button style */
+.resume-btn {
+  display: inline-block;
+  background: black;
+  color: white;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.resume-btn:hover { background: black; }

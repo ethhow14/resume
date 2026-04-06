@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Snake Game</title>
+  <link rel="stylesheet" href="css/custom.css">
+  <style>
+    .game-area { text-align:center; }
+    canvas { background:#111; display:block; margin:0.5rem auto; border-radius:6px; }
+    .controls { margin:0.5rem auto; text-align:center; }
+    .score { color:#fff; font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p><a href="scratch.html" class="resume-btn">Back to Scratch</a></p>
+    <div class="content game-area">
+      <h2 style="margin-top:0;">Play Snake</h2>
+      <div class="score" id="score">Score: 0</div>
+      <canvas id="game" width="360" height="360"></canvas>
+      <div class="controls">
+        <button id="startBtn" class="resume-btn">Start / Restart</button>
+      </div>
+      <p class="text-muted">Use arrow keys to move. Eat food (green) to grow.</p>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const canvas = document.getElementById('game');
+      const ctx = canvas.getContext('2d');
+      const grid = 20; // size of cells
+      const cols = canvas.width / grid; 
+      const rows = canvas.height / grid;
+      let snake, dir, food, timer, speed;
+      const scoreEl = document.getElementById('score');
+
+      function reset(){
+        snake = [{x:Math.floor(cols/2), y:Math.floor(rows/2)}];
+        dir = {x:1,y:0};
+        placeFood();
+        speed = 120; // ms per tick
+        updateScore();
+        if(timer) clearInterval(timer);
+        timer = setInterval(tick, speed);
+      }
+
+      function placeFood(){
+        food = {
+          x: Math.floor(Math.random()*cols),
+          y: Math.floor(Math.random()*rows)
+        };
+        // avoid placing on snake
+        for(const s of snake){ if(s.x===food.x && s.y===food.y) return placeFood(); }
+      }
+
+      function tick(){
+        const head = {x: snake[0].x + dir.x, y: snake[0].y + dir.y};
+        // end game if the head goes out of bounds (no wrapping)
+        if (head.x < 0 || head.x >= cols || head.y < 0 || head.y >= rows) {
+          return gameOver();
+        }
+        // collision with self
+        for(const seg of snake){ if(seg.x===head.x && seg.y===head.y){ return gameOver(); } }
+        snake.unshift(head);
+        // eat food
+        if(head.x===food.x && head.y===food.y){ placeFood(); updateScore(); }
+        else { snake.pop(); }
+        draw();
+      }
+
+      function updateScore(){ scoreEl.textContent = 'Score: ' + (snake.length - 1); }
+
+      function gameOver(){
+        clearInterval(timer);
+        alert('Game over — score: ' + (snake.length-1));
+      }
+
+      function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        // draw food
+        ctx.fillStyle = '#2ecc71';
+        ctx.fillRect(food.x*grid, food.y*grid, grid-2, grid-2);
+        // draw snake
+        ctx.fillStyle = '#f1c40f';
+        for(const s of snake){ ctx.fillRect(s.x*grid, s.y*grid, grid-2, grid-2); }
+      }
+
+      // keyboard
+      window.addEventListener('keydown', e=>{
+        const key = e.keyCode;
+        if(key===37 && dir.x!==1) dir={x:-1,y:0};
+        else if(key===38 && dir.y!==1) dir={x:0,y:-1};
+        else if(key===39 && dir.x!==-1) dir={x:1,y:0};
+        else if(key===40 && dir.y!==-1) dir={x:0,y:1};
+      });
+
+      document.getElementById('startBtn').addEventListener('click', reset);
+
+      // start initially
+      reset();
+    })();
+  </script>
+</body>
+</html>
