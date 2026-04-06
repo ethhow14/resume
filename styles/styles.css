@@ -1,0 +1,54 @@
+body {
+            font-family: Arial,Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            font-size: 14px;
+            background-color: lightgrey;
+        }
+        a {
+            text-decoration: none;
+            color: red;
+        }
+        a:hover {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+          a:visited {
+              color: red;
+          }
+        h4 {
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        li {
+            font-weight: normal;
+        }
+        ul {
+            font-size: 13px;
+        }
+
+        .boldd {
+            font-weight: bold;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+        .justify {
+            text-align: justify;
+        }
+        .imgbg {
+            /* Use a quoted URL with the space preserved; avoids relying on backslash escapes */
+            background-image: url("../images/ski background.webp");
+        }
+        .box1    {
+            border: 2px solid black;
+            border-style: dotted;
+            margin: 10px;
+        }
+        .box2   {
+            padding: 5px;
+            
+        }
+        .box3   {
+            margin: 50px;
+        }

@@ -1,0 +1,71 @@
+body {
+    /* Let the main stylesheet control page background to avoid conflicting colors */
+    background-color: transparent;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+ }
+
+.common
+    {
+    /* Remove heavy white borders that create visible horizontal lines */
+    border: none;
+        position: absolute;
+        box-sizing: border-box;
+}
+.header
+    {
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        height: 100px;
+        border-bottom: solid 1px #555555;
+        padding-bottom: 0px;
+        
+}
+/* Ensure images inside the header don't exceed the header height and cause overlap */
+.header img {
+    height: 100px;
+    max-height: 100%;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+.leftmenu
+    {
+        top: 120px;
+        left: 5px;
+        width:100px;
+        bottom: 39px;
+        border-right: solid 1px #555555;
+        padding-right: 5px;
+        
+}
+.mainbody
+    {
+        top: 114px;
+        left: 114px;
+        right: 114px;
+        bottom: 39px;
+       
+}
+.rightmenu
+    {
+        top: 114px;
+        right: 5px;
+        width:100px;
+        bottom: 39px;
+        border-left: solid 1px #555555;
+        padding-left: 5px;
+}
+.footer
+    {
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        height:25px;
+        font-size: 8px;
+        color: grey;
+        text-align: center; 
+        padding-top: 15px;
+        position: fixed;
+    background-color: transparent;
+}
